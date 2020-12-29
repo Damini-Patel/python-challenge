@@ -12,13 +12,15 @@ with open(csvpath, "r") as csvfile:
     # skip header
     csv_header = next(csvfile)
 
-    #Read through each line 
+    #Set variables
     row_count = 0
     total_pl = 0
     best_amount = 0
     worst_amount = 0
     flag = 1
     average_arr = []
+
+    #Read through each line 
     for row in csv_reader:
         date = row[0]
         profit_loss = int(row[1])
@@ -53,17 +55,17 @@ with open(csvpath, "r") as csvfile:
     
 #Print to terminal
 print("Financial Analysis")
-print("--------------------------------------------------")
+print("--------------------------------------------")
 print("Total Months: " + str(row_count))
 print("Net total amount of Profit/Losses: $ " + str(total_pl))
 print("Average Change in Profit/Losses: $" + str("{:.2f}".format(sum(average_arr) / len(average_arr))))
 print("Greatest increase in profits: " + best_month + " ($" + str(best_amount) + ")")
 print("Greatest dcrease in losses: " + worst_month + " ($" + str(worst_amount) + ")")
 
-
+#print to text file
 with open("PyBank_Results.txt", "w") as f:
     f.write("Financial Analysis\n")
-    f.write("--------------------------------------------------\n")
+    f.write("--------------------------------------------\n")
     f.write("Total Months: " + str(row_count) + "\n")
     f.write("Net total amount of Profit/Losses: $ " + str(total_pl) + "\n")
     f.write("Average Change in Profit/Losses: $" + str("{:.2f}".format(sum(average_arr) / len(average_arr))) + "\n")
