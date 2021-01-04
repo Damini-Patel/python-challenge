@@ -14,8 +14,6 @@ Requirements:
 - Find the greatest increase in profits (date and amount) over the entire period
 - Find the greatest decrease in losses (date and amount) over the entire period
 
-### **Execution**
-
 ### **Result**
 
 The results should read as follows:
@@ -43,8 +41,6 @@ Requirements:
 - Find the percentage of votes each candidate won
 - Find the total number of votes each candidate won
 - Find the winner of the election based on popular vote.
-
-### **Execution**
 
 ### **Result**
 

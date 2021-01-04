@@ -2,29 +2,29 @@
 import os
 import csv
 
-# Set path for file
+# set path for file
 csvpath = os.path.join("..", "PyPoll", "Resources\\election_data.csv")
 
-# Open the CSV
+# open the CSV
 with open(csvpath, "r") as csvfile:
     csv_reader = csv.reader(csvfile, delimiter=",")
 
     # skip header
     csv_header = next(csvfile)
 
-    #Set Varibales
+    # set varibales
     vote_count = 0
     votes_dic = {}
     
-    #Read through each line
+    # read through each line
     for row in csv_reader:
         candidate = row[2]
 
-        #find total number of votes cast
+        # find total number of votes cast
         vote_count += 1
 
-        #List candidates who received votes
-        #find number of votes each candidate won
+        # list candidates who received votes
+        # find number of votes each candidate won
         if candidate in votes_dic:
             x = votes_dic[candidate]
             x += 1
@@ -32,8 +32,8 @@ with open(csvpath, "r") as csvfile:
         else:
             votes_dic[candidate] = 1
 
-#print statements to terminal
-#print to text file
+# print statements to terminal
+# print to text file
 with open("PyPoll_Results.txt", "w") as f:
     
     print("Election Results")
@@ -45,7 +45,7 @@ with open("PyPoll_Results.txt", "w") as f:
     print("--------------------------------------------")
     f.write("--------------------------------------------\n")
 
-    #find percentage of votes each candidate received
+    # find percentage of votes each candidate received
     win_value = 0
     for c in votes_dic:
         percentage_votes = round(votes_dic[c] / vote_count * 100)
@@ -54,7 +54,7 @@ with open("PyPoll_Results.txt", "w") as f:
         print(c + ": " + percent_str + " (" + str(votes_dic[c]) + ")")
         f.write(c + ": " + percent_str + " (" + str(votes_dic[c]) + ")\n")
 
-    #find winner of the election based on votes 
+    # find winner of the election based on votes 
         if votes_dic[c] > win_value:
             win_value = votes_dic[c]
             winner = c
